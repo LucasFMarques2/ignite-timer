@@ -5,14 +5,18 @@ export const HeaderContainer = styled.header`
   align-items: center;
   justify-content: space-between;
 
+  img {
+    height: 3rem;
+  }
+
   nav {
     display: flex;
-    gap: 0.8rem;
+    gap: 0.5rem;
   }
 
   a {
-    width: 4.8rem;
-    height: 4.8rem;
+    width: 3rem;
+    height: 3rem;
 
     display: flex;
     justify-content: center;
