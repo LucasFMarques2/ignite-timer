@@ -59,8 +59,8 @@ export function Home() {
         )
 
         if (secondsDifference >= totalSeconds) {
-          setClylces(
-            clycles.map((cycle) => {
+          setClylces((state) =>
+            state.map((cycle) => {
               if (cycle.id === activeCycedId) {
                 return { ...cycle, finishedDate: new Date() }
               } else {
@@ -68,6 +68,8 @@ export function Home() {
               }
             }),
           )
+          setAmountSecondPassed(totalSeconds)
+          clearInterval(interval)
         } else {
           setAmountSecondPassed(secondsDifference)
         }
@@ -99,8 +101,8 @@ export function Home() {
   }
 
   function handleInterruptCycle() {
-    setClylces(
-      clycles.map((cycle) => {
+    setClylces((state) =>
+      state.map((cycle) => {
         if (cycle.id === activeCycedId) {
           return { ...cycle, interruptedDate: new Date() }
         } else {
