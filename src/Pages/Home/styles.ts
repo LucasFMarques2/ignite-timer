@@ -61,6 +61,11 @@ const BaseInput = styled.input`
   padding: 0 0.5rem;
   color: ${({ theme }) => theme['gray-100']};
 
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
   &:focus {
     box-shadow: none;
     border-color: ${({ theme }) => theme['green-500']};
@@ -82,7 +87,7 @@ export const MinutsAmountInput = styled(BaseInput)`
   width: 4rem;
 `
 
-export const StartCountDownButton = styled.button`
+export const BaseCountDownButton = styled.button`
   width: 100%;
   border: none;
   padding: 1rem;
@@ -97,16 +102,26 @@ export const StartCountDownButton = styled.button`
 
   cursor: pointer;
 
-  background-color: ${({ theme }) => theme['green-500']};
-  color: ${({ theme }) => theme['gray-100']};
   transition: background 0.2s;
+  color: ${({ theme }) => theme['gray-100']};
 
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
   }
+`
+
+export const StartCountDownButton = styled(BaseCountDownButton)`
+  background-color: ${({ theme }) => theme['green-500']};
 
   &:not(:disabled):hover {
     background-color: ${({ theme }) => theme['green-700']};
+  }
+`
+
+export const StopCountDownButton = styled(BaseCountDownButton)`
+  background-color: ${({ theme }) => theme['red-500']};
+  &:not(:disabled):hover {
+    background-color: ${({ theme }) => theme['red-700']};
   }
 `
