@@ -1,13 +1,15 @@
 import { createContext, ReactNode, useReducer, useState } from 'react'
-import {  Cycle, cyclesReducer } from '../reducers/cycles/reducer'
-import { addNewCycleAction, interruptCurrentCycleAction, markCurrentCycleAsFinishedAction } from '../reducers/cycles/actions'
+import { Cycle, cyclesReducer } from '../reducers/cycles/reducer'
+import {
+  addNewCycleAction,
+  interruptCurrentCycleAction,
+  markCurrentCycleAsFinishedAction,
+} from '../reducers/cycles/actions'
 
 interface CreateCycleData {
   task: string
   minutesAmount: number
 }
-
-
 
 interface CyclesContextType {
   cycles: Cycle[]
@@ -29,16 +31,14 @@ interface CyclesContextProviderProps {
 export function CyclesContextProvider({
   children,
 }: CyclesContextProviderProps) {
-  const [cyclesState, dispatch] = useReducer(cyclesReducer,
-    {
-      cycles: [],
-      activeCycleId: null,
-    },
-  )
-  
+  const [cyclesState, dispatch] = useReducer(cyclesReducer, {
+    cycles: [],
+    activeCycleId: null,
+  })
+
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
-  
-  const {cycles, activeCycleId} = cyclesState
+
+  const { cycles, activeCycleId } = cyclesState
   const activeCycle = cycles.find((cycle) => cycle.id === activeCycleId)
 
   function setSecondsPassed(seconds: number) {
